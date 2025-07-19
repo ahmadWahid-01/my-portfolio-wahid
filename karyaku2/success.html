@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran Berhasil</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        section {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 100px; /* Memberi ruang agar konten tidak tertutup footer */
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            position: fixed; /* Footer tetap di bawah */
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Sedikit bayangan untuk estetika */
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>Pembayaran Berhasil</h1>
+        <p>Terima kasih atas pembayaran Anda. Pesanan Anda sedang diproses.</p>
+        <button onclick="window.location.href='laporan.html'">Lihat Laporan Pembelian</button>
+        <button onclick="window.location.href='index.html'">Kembali ke Home</button>
+    </section>
+
+    <footer>
+        <p>&copy; Ahmad Wahid Al Amin | Valexy 2024.</p>
+    </footer>
+</body>
+</html>

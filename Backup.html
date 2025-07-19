@@ -1,0 +1,852 @@
+<!DOCTYPE html>  <html lang="id"> 
+<head>  
+  <button id="music-toggle" style="  
+    position: fixed;  
+    bottom: 20px;  
+    right: 20px;  
+    padding: 12px 18px;  
+    border-radius: 50px;  
+    background-color: var(--secondary);  
+    color: white;  
+    border: none;  
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);  
+    cursor: pointer;  
+    z-index: 10000;  
+  ">  
+    🎵 Musik: Mati  
+  </button> 
+  <audio id="bg-music" src="sound/musik2.mp3" loop></audio>
+
+  <link rel="manifest" href="manifest.json" />  
+  <meta name="theme-color" content="#8B4513" />  
+  <link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png" />  
+  <link rel="icon" type="image/icon" href="img/favicon.ico">  
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+  <title>Portofolio</title>  
+  <link rel="stylesheet" href="style.css" />  
+  <script defer src="script.js"></script>  
+  <style>  
+  
+  :root {  
+      --bg: #fff;  
+      --text: #333;  
+      --primary: #8B4513;  
+      --secondary: #A0522D;  
+    }  body.dark {  
+  --bg: #121212;  
+  --text: #f0f0f0;  
+  --primary: #D2B48C;  
+  --secondary: #8B0000;  
+}  
+
+
+html {  
+  scroll-behavior: smooth;  
+}  
+
+body {  
+  display: flex;  
+  flex-direction: column;  
+  /* Mengatur item flex dalam satu kolom */  
+  min-height: 100vh;  
+  /* Memastikan body mengambil tinggi penuh viewport */  
+  margin: 0;  
+  padding: 0;  
+  background-color: var(--bg);  
+  color: var(--text);  
+  font-family: 'Segoe UI', sans-serif;  
+  transition: background 0.3s ease, color 0.3s ease;  
+}  
+
+main {  
+  flex-grow: 1;  
+  /* Ini kuncinya: memungkinkan main mengisi sisa ruang */  
+}  
+.footer {
+padding: 20px;
+text-align: center;
+background: #4e342e;
+color: white;
+}
+body.dark .footer {
+background: #1a1a1a;
+color: #f0f0f0;
+}
+
+/* Style header dan container */  
+header {  
+  padding: 20px;  
+  background-color: var(--primary);  
+  color: white;  
+  display: flex;  
+  justify-content: space-between;  
+  align-items: center;  
+}  
+
+.container {  
+  padding: 20px;  
+}  
+
+/* Style tombol umum */  
+button,  
+.cv-button {  
+  background-color: var(--secondary);  
+  color: white;  
+  padding: 10px 20px;  
+  border: none;  
+  border-radius: 10px;  
+  font-size: 16px;  
+  cursor: pointer;  
+  transition: background 0.3s;  
+}  
+
+button:hover,  
+.cv-button:hover {  
+  background-color: var(--primary);  
+}  
+
+/* Style form */  
+.form-group {  
+  margin-bottom: 15px;  
+}  
+
+input,  
+textarea {  
+  width: 100%;  
+  padding: 10px;  
+  border-radius: 8px;  
+  border: 1px solid #ccc;  
+  box-sizing: border-box;  
+  background-color: var(--bg);  
+  color: var(--text);  
+}  
+
+/* Dark mode toggle */  
+.dark-toggle {  
+  margin-left: 20px;  
+}  
+
+/* Media Queries */  
+@media screen and (max-width: 768px) {  
+  .project-grid {  
+    grid-template-columns: 1fr;  
+  }  
+
+  .project-card {  
+    padding: 1rem;  
+  }  
+}  
+
+@media screen and (max-width: 600px) {  
+  header,  
+  .container {  
+    padding: 10px;  
+  }  
+}  
+
+/* Lazy loading image effect */  
+.img[loading="lazy"] {  
+  filter: blur(5px);  
+  transition: filter 0.5s ease;  
+}  
+
+.img[loading="lazy"][data-loaded="true"] {  
+  filter: blur(0);  
+}  
+
+/* Project card specific styles */  
+.project-card {  
+  background-color: #fff8f0;  
+  padding: 1.5rem;  
+  border-radius: 8px;  
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);  
+  transition: transform 0.3s, box-shadow 0.3s;  
+  overflow: hidden;  
+  /* Mencegah gambar meluber */  
+  display: flex;  
+  flex-direction: column;  
+  align-items: center;  
+}  
+
+body.dark .project-card {  
+  background-color: #1e1e1e;  
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.08);  
+}  
+
+.project-card img {  
+  width: 100%;  
+  aspect-ratio: 4 / 3;  
+  /* atau 16 / 9, sesuaikan */  
+  object-fit: cover;  
+  border-radius: 8px;  
+  display: block;  
+}  
+
+.project-card a {  
+  display: inline-block;  
+  margin-top: 1rem;  
+  padding: 0.6rem 1.2rem;  
+  background-color: #4e342e;  
+  color: #fff;  
+  border-radius: 8px;  
+  text-decoration: none;  
+  transition: background-color 0.3s ease, transform 0.2s ease;  
+}  
+
+.project-card a:hover {  
+  background-color: #3e2723;  
+  transform: scale(1.05);  
+}  
+
+/* About section alignment */  
+.about p {  
+  text-align: justify;  
+}  
+
+/* Project grid alignment */  
+.project-grid.center {  
+  justify-content: center;  
+  text-align: center;  
+}  
+
+/* Music toggle button styles */  
+#music-toggle {  
+  transition: background-color 0.3s, transform 0.2s;  
+}  
+
+#music-toggle:hover {  
+  background-color: var(--primary);  
+  transform: scale(1.05);  
+}  
+.hero {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+}
+/* Hero section photo */  
+.hero-photo img {  
+  max-width: 100%;  
+  height: auto;  
+  /* Perbaiki ini dari 12px */  
+  object-fit: cover;  
+  border-radius: 12px;  
+  display: block;  
+  margin: 0 auto;  
+  max-height: 500px;  
+}  
+
+/* Karya card link color */  
+.karya-card a {  
+  color: #fff !important;  
+}  
+
+.karya-card a:hover {  
+  background-color: #3e2723;  
+  color: #fff !important;  
+}  
+
+/* CV button style */  
+.cv-button {  
+  background-color: var(--secondary);  
+  color: white;  
+  padding: 10px 16px;  
+  text-decoration: none;  
+  border-radius: 10px;  
+  font-size: 16px;  
+  transition: background 0.3s;  
+}  
+
+.cv-button:hover {  
+  background-color: var(--primary);  
+}  
+
+#toast {  
+  position: fixed;  
+  top: 30px;  
+  right: 30px;  
+  background: white;  
+  color: white;  
+  padding: 16px 24px;  
+  border-radius: 12px;  
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);  
+  display: none;  
+  font-size: 16px;  
+  z-index: 9999;  
+  opacity: 0;  
+  transition: opacity 0.5s ease;  
+}  
+.timeline {
+
+position: relative;
+margin: 40px 0;
+padding: 0;
+list-style: none;
+border-left: 4px solid var(--primary);
+}
+.timeline li {
+position: relative;
+padding: 20px 20px 20px 40px;
+}
+.timeline li::before {
+content: '';
+position: absolute;
+left: -10px;
+top: 20px;
+width: 20px;
+height: 20px;
+background-color: var(--primary);
+border-radius: 50%;
+}
+.timeline-content {
+background: var(--bg);
+padding: 1rem;
+border-radius: 8px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+transition: all 0.3s ease;
+}
+body.dark .timeline-content {
+background: #1e1e1e;
+color: #f0f0f0;
+}
+.testimoni {
+padding: 40px 20px;
+background-color: #fff8f0;
+text-align: center;
+}
+
+body.dark .testimoni {
+background-color: #1a1a1a;
+}
+
+.testimonial-grid {
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 24px;
+margin-top: 30px;
+}
+
+.testimonial-card {
+background-color: #f3e5d7;
+padding: 20px;
+border-radius: 16px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+max-width: 300px;
+text-align: center;
+transition: transform 0.3s ease;
+}
+
+body.dark .testimonial-card {
+background-color: #2e2e2e;
+color: #f0f0f0;
+}
+
+.testimonial-card:hover {
+transform: translateY(-5px);
+}
+
+.testimonial-card img {
+width: 100px;
+height: 100px;
+border-radius: 50%;
+object-fit: cover;
+object-position: center 20%; /* Tambahan ini menggeser gambar sedikit ke bawah */
+margin-bottom: 15px;
+border: 3px solid #a9745b;
+}
+
+.testimonial-card h4 {
+margin: 10px 0 4px;
+color: #4e342e;
+}
+
+body.dark .testimonial-card h4 {
+color: #d2b48c;
+}
+
+.testimonial-card span {
+font-size: 14px;
+color: #777;
+}
+footer a {
+  color: inherit;            /* Biar warnanya tetap sama */
+  text-decoration: none;     /* Biar tidak muncul garis bawah */
+}
+
+footer a:hover {
+  text-decoration: underline;  /* Biar saat hover tetap terlihat interaktif */
+}
+</style>
+</head>  
+<body>  
+  <audio id="clickSound" src="sound/musik.mp3" preload="auto"></audio>  
+  <header>  
+    <nav>  
+      <h1>Ahmad Wahid Al Amin</h1>  
+      <div class="menu-toggle" id="menu-toggle">  
+        <span></span>  
+        <span></span>  
+        <span></span>  
+      
+      </div>  
+      <ul id="nav-links">  
+        <li><a href="#about">Tentang</a></li>  
+        <li><a href="#projects">Portofolio</a></li>  
+        <li><a href="#testi">Testimoni</a></li>  
+        <li><a href="#lokasi">Lokasi</a></li>  
+        <li><a href="#contact">Kontak</a></li>  
+      </ul>
+      <button onclick="toggleDarkMode()">🌓 Mode</button> <div id="clock" style="margin-top:5px; font-size: 14px;"></div>  
+    </nav>  
+  </header>  
+  <main>  
+    <section id="home" class="hero">  
+      <div class="hero-photo">  
+        <img id="about" src="img/2.jpg" alt="Foto Ahmad Wahid" />  
+      </div>  
+    </section>  
+    <section id="" class="about slide-up">  
+      <h2>Tentang Saya</h2>  
+      <p>Saya adalah Ahmad Wahid Al Amin, seorang mahasiswa manajemen yang memiliki semangat tinggi dalam mengembangkan  
+        diri melalui kegiatan organisasi, lomba, dan berbagai event kreatif. Saya percaya bahwa pengalaman di luar kelas  
+        adalah fondasi penting untuk membangun karakter, kepemimpinan, dan keterampilan masa depan.</p>  
+      <p>Berawal dari semangat belajar sejak kecil, saya aktif di berbagai organisasi seperti OSIS, ekstra kepramukaan, dan  
+        divisi desain grafis. Selain itu, saya juga konsisten mengikuti berbagai lomba dan menjadi panitia dalam  
+        event-event penting di sekolah dan di luar sekolah. Saya yakin bahwa setiap pengalaman adalah bekal menuju masa depan  
+        yang lebih baik.</p>  
+      <p>Website ini saya buat sebagai media dokumentasi dan portofolio pribadi, yang mencerminkan perjalanan saya dalam  
+        dunia pendidikan dan pengembangan diri. Melalui halaman ini, saya ingin berbagi semangat, inspirasi, dan bukti  
+        nyata bahwa dengan tekad dan konsistensi, siapa pun bisa berkembang dan berkontribusi.</p>  
+      <blockquote style="margin-top:2rem; font-style:italic; color:#6e4d3c;">"Bukan kecerdasan, tetapi kerja keras dan  
+        ketekunan yang akan membawamu ke puncak." – Carl Jung</blockquote>  
+    </section>  
+       <section id="timeline" class="timeline-section slide-up">  
+  <h2 style="text-align: center;">Timeline Perjalanan</h2>  
+  <ul class="timeline">  
+    <li>  
+      <div class="timeline-content">  
+        <h3>2022</h3>  
+        <p>Menjadi Sekretaris OSIS & aktif di Kepramukaan.</p>  
+      </div>  
+    </li>  
+    <li>  
+      <div class="timeline-content">  
+        <h3>2023</h3>  
+        <p>Juara MLBB & Festival Belajar.ID.</p>  
+      </div>  
+    </li>  
+    <li>  
+      <div class="timeline-content">  
+        <h3>2024</h3>  
+        <p>Kemah Kebangsaan, Digifest, & PKL.</p>  
+      </div>  
+    </li>  
+    <li>  
+      <div id="projects" class="timeline-content">  
+        <h3>2025</h3>  
+        <p >Kompetensi Keahlian & Webinar Public Speaking.</p>  
+      </div>  
+    </li>  
+  </ul>  
+</section>  
+    <section id="" class="projects slide-up">  
+      <h2>Dokumentasi & Portofolio</h2>  
+      <h3 class="section-subtitle">Organisasi</h3>  
+      <div class="project-grid">  
+        <div class="project-card zoom-out" data-aos="fade-up">  
+          <h4>2022/2023 - Sekretaris OSIS</h4>  
+          <img src="img/sekretaris1.jpg" alt="Sekretaris OSIS">  
+          <p>Sebagai sekretaris OSIS SMKN Palang tahun 2022/2023.</p>  
+        </div>  
+        <div class="project-card zoom-out" data-aos="fade-up">  
+          <h4>2022/2023 - Kepramukaan</h4>  
+          <img src="img/pramuka.jpg" alt="Kepramukaan">  
+          <p>Aktif dalam kegiatan kepramukaan tingkat sekolah dan luar sekolah.</p>  
+        </div>  
+        <div class="project-card zoom-out" data-aos="fade-up">  
+          <h4>2022/2024 - Desain Grafis</h4>  
+          <img src="img/desain.jpg" alt="Desain Grafis">  
+          <p>Bagian desain dalam berbagai kegiatan OSIS dan event sekolah.</p>  
+        </div>  
+        <div class="project-card zoom-out" data-aos="fade-up">  
+          <h4>2023/2024 - OSIS (Devisi Sosial Media)</h4>  
+          <img src="img/anggota.jpg" alt="Anggota OSIS">  
+          <p>Aktif sebagai anggota OSIS devisi sosmed (Sosial Media) di tahun 2023/2024.</p>  
+        </div>  
+      </div>  
+      <h3 class="section-subtitle">Lomba</h3>  
+      <div class="project-grid">  
+        <div class="project-card zoom-out" data-aos="fade-up">  
+          <h4>2023 - MLBB Tournamen</h4>  
+          <img src="img/mlbb1.jpg" alt="mlbb">  
+          <p>Juara II dalam sparing mlbb antar kelas bidang esport 2023.</p>  
+        </div>  
+        <div class="project-card zoom-out" data-aos="fade-up">  
+          <h4>2024 - Gerak Jalan</h4>  
+          <img src="img/gerakjalan.jpg" alt="Gerak Jalan">  
+          <p>Lomba gerak jalan tingkat kabupaten tahun 2024.</p>  
+        </div>  
+        <div class="project-card zoom-out" data-aos="fade-up">  
+          <h4>2024 - MLBB Tournamen</h4>  
+          <img src="img/mlbb2.png" alt="mlbb">  
+          <p>Juara I dalam sparing mlbb antar kelas bidang esport 2024.</p>  
+          <em>* note: dokumentasi asli hilang (ilustrasi)</em>  
+        </div>  
+      </div>  
+      <h3 class="section-subtitle">Sertifikat</h3>  
+      <div class="project-grid">  
+        <div class="project-card zoom-out" data-aos="fade-up">  
+          <h4>2023 - Sertifikat Peserta Telkom Digiup</h4>  
+          <img src="img/digiup_peserta.png" alt="Sertifikat IT">  
+          <p>Total 1000 peserta seluruh Indonesia dalam 1 program Telkom Digiup 2023.</p>  
+        </div>  
+        <div class="project-card zoom-out" data-aos="fade-up">  
+          <h4>2023 - Sertifikat IT Telkom Digiup</h4>  
+          <img src="img/digiup.png" alt="Sertifikat IT">  
+          <p>Sertifikasi Keahlian Teknologi Informasi, menjadi 100 besar dan lolos dalam program Telkom Digiup 2023.</p>  
+        </div>  
+        <div class="project-card zoom-out" data-aos="fade-up">  
+          <h4>2024 - Sertifikat Praktik Kerja Lapangan</h4>  
+          <img src="img/pkl.jpg" alt="pkl">
+          <p>Sertifikat resmi PKL dari Ronggolawe IT Shop tahun 2024.</p>  
+        </div>  
+        <div class="project-card zoom-out" data-aos="fade-up">  
+          <h4>2025 - Sertifikat Kompetensi Keahlian Jurusan Sekolah</h4>  
+          <img src="img/sertif_sekolah.jpg" alt="Kompetensi">  
+          <p>Sertifikat kompetensi resmi dari jurusan sekolah tahun 2025.</p>  
+        </div>  
+        <div class="project-card zoom-out" data-aos="fade-up">  
+          <h4>2025 - Webinar by Galeria Potensi</h4>  
+          <img src="img/webinar.jpg" alt="Webinar">  
+          <p>Peserta terbaik dalam webinar nasional dengan 900+ peserta dibidang public speaking digital.</p>  
+        </div>  
+        <div class="project-card zoom-out" data-aos="fade-up">  
+          <h4>2025 - Sertifikat UKBI</h4>  
+          <img src="img/ukbi.png" alt="UKBI">  
+          <p>Uji Kemahiran Berbahasa Indonesia oleh Badan Bahasa tahun 2025.</p>  
+        </div>  
+      </div>  
+      <h3 class="section-subtitle">Event</h3>  
+      <div class="project-grid">  
+        <div class="project-card zoom-out" data-aos="fade-up">  
+          <h4>2023 - festival belajar.id</h4>  
+          <img src="img/belajar.id.jpg" alt="Seminar Pendidikan">  
+          <p>Tamu festival belajar.id yang diselenggarakan oleh Dinas Pendidikan Kabupaten Tuban 2023.</p>  
+        </div>  
+        <div class="project-card zoom-out" data-aos="fade-up">  
+          <h4>2022-2024 - Classmeet</h4>  
+          <img src="img/classmet.jpg" alt="Classmeet">  
+          <p>Panitia pelaksana dan koordinator lomba dan pertandingan antar kelas.</p>  
+        </div>  
+        <div class="project-card zoom-out" data-aos="fade-up">  
+          <h4>2023 - Kader Adiwiyata</h4>  
+          <img src="img/adiwiyata.png" alt="Adiwiyata">  
+          <p>Ketua pokja devisi pembibitan dan perawatan dalam Mendukung program lingkungan hidup sekolah.</p>  
+          <em>* note: dokumentasi asli hilang (ilustrasi)</em>  
+        </div>  
+        <div class="project-card zoom-out" data-aos="fade-up">  
+          <h4>2024 - Digifest</h4>  
+          <img src="img/digifest.jpg" alt="Digifest">  
+          <p>(Host Radio dan Operator Digital) dalam Digital Festival yang mempertemukan berbagai bentuk kreatifitas teknologi terbesar se-Jawa Timur 2024.</p>  
+        </div>  
+        <div class="project-card zoom-out" data-aos="fade-up">  
+          <h4>2024 - Kemah Kebangsaan</h4>  
+          <img src="img/kemah_kebangsaan.jpg" alt="kemah">  
+          <p>Kemah kebangsaan yang diikuti sekolah SMA/SMK yang ada di Tuban 2024.</p>  
+        </div>  
+        <div class="project-card zoom-out" data-aos="fade-up">  
+          <h4>2024 - Saksi TPS</h4>  
+          <img src="img/tps.jpg" alt="Digifest">  
+          <p>Saksi TPS 006 dengan acuan transparasi dan terkoordinasi tahun 2024.</p>  
+        </div>  
+        <div class="project-card zoom-out" data-aos="fade-up">  
+          <h4>2024 - SPMB</h4>  
+          <img src="img/spmb.jpg" alt="SPMB">  
+          <p>Pendampingan kegiatan penerimaan murid baru Sekolah SMKN Palang 2024.</p>  
+        </div>  
+        <div class="project-card zoom-out" data-aos="fade-up">  
+          <h4>2024 - LDKS</h4>  
+          <img src="img/ldks.jpg" alt="LDKS">  
+          <p>Latihan dasar kepemimpinan siswa diluar sekolah 2024.</p>  
+        </div>  
+        <div class="project-card zoom-out" data-aos="fade-up">  
+          <h4>2024 - MPLS</h4>  
+          <img src="img/mpls.jpg" alt="MPLS">
+          <p>Masa pengenalan lingkungan sekolah untuk siswa baru tahun ajaran 2024.</p>  
+        </div>  
+        <div class="project-card zoom-out" data-aos="fade-up">  
+          <h4>2024 - Paskibra</h4>  
+          <img src="img/paskibra.jpg" alt="paskib">  
+          <p>Paskibraka dalam agenda hari kemerdekaan Indonesia yang ke-79 tahun 2024.</p>  
+        </div>  
+        <div class="project-card zoom-out" data-aos="fade-up">  
+          <h4>2024 - Pelantikan OSIS</h4>  
+          <img src="img/pelantikan.jpg" alt="pelantikan">  
+          <p>Masa pelantikan anggota OSIS baru priode 2024/2025.</p>  
+        </div>  
+      </div>  
+      <h3 class="section-subtitle">Karya</h3>  
+      <div class="project-grid">  
+        <div class="project-card zoom-out karya-card" data-aos="fade-up">  
+          <h4>2023 - Website Jual-beli Sederhana</h4>  
+          <img src="img/karya1.jpg" alt="Karya Saya">  
+          <p>Link menuju website khusus yang berisi hasil karya saya selama belajar di SMKN Palang 2023.</p>
+          <a href="karyaku1/index.html" target="karyaku-btn">Lihat Website Karya Saya</a>  
+        </div>  
+        <div class="project-card zoom-out karya-card" data-aos="fade-up">  
+          <h4>2024 - Website Jual-beli kompleks</h4>  
+          <img src="img/karya2.jpg" alt="Karya Saya">  
+          <p>Link menuju website khusus yang berisi hasil karya saya selama belajar di SMKN Palang 2024.</p>
+          <a href="karyaku2/index.html" target="karyaku-btn">Lihat Website Karya Saya</a>  
+        </div>  
+        <div class="project-card zoom-out karya-card" data-aos="fade-up">  
+          <section id="cv">  
+            <h2>Curriculum Vitae</h2>  
+            <p>Berikut adalah CV saya, yang dapat Anda lihat :</p>  <div style="display: flex; gap: 10px; flex-wrap: wrap;">  
+          <a id="testi" href="password.html" target="_blank" class="cv-button">  
+            ️ Lihat CV  
+          </a>  
+    </div>  
+      </section>  
+       </div>  
+        <div class="project-card zoom-out karya-card" data-aos="fade-up">  
+      <section id="">  
+        <h2>Essay BU 2025</h2>  
+        <p>Berikut adalah Essay saya, yang dapat Anda lihat :</p>  
+
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">  
+          <a href="password.html" target="_blank" class="essay-button">  
+            ️ Lihat Essay  
+          </a>  
+    </div>  
+      </section>  
+       </div>  
+        </div>  
+</section>  
+<section id="" class="testimoni slide-up">
+
+  <h2 style="text-align: center;">Apa Kata Mereka?</h2>  
+  <div class="testimonial-grid">  
+    <div class="testimonial-card">  
+      <img src="img/fatih.jpg" alt="Foto Pak Fatihin">  
+      <p>"Wahid adalah sosok yang bertanggung jawab dan penuh inisiatif. Ia patut jadi panutan!"</p>  
+      <h4>Pak Fatihin, S.Pd</h4>  
+      <span>Wali kelas</span>  
+    </div>  
+    <div class="testimonial-card">  
+      <img src="img/fajar.jpg" alt="Foto Erika Shafa">  
+      <p>"Saya sangat terkesan dengan karya yang dibuatnya sangat kreatif dan rapi."</p>  
+      <h4>Erika Shafa</h4>  
+      <span>Teman Dekat</span>  
+    </div>  
+      <div class="testimonial-card">  
+      <img src="img/fajar.jpg" alt="Foto Erika Shafa">  
+      <p>"Saya sangat terkesan dengan karya yang dibuatnya sangat kreatif dan rapi."</p>  
+      <h4>Erika Shafa</h4>  
+      <span>Teman Dekat</span>  
+    </div>  
+    <div class="testimonial-card">  
+      <img id="lokasi"  src="img/rangga.jpg" alt="Foto Desta Rangga">  
+      <p>"Kerja tim bareng Wahid selalu menyenangkan. Dia tahu apa yang harus dilakukan."</p>  
+      <h4>Desta Rangga </h4>  
+      <span >Rekan Dekat</span>  
+    </div>  
+  </div>  
+</section>  
+    <section id="">  
+  <h2 style="text-align:center;">📍 Lokasi Saya</h2>  
+    <div id="contact" ></div>
+  <div id="map" style="height: 400px; border-radius: 12px;"></div>  
+</section>  
+    <section class="contact slide-up">  
+  </iframe>  
+</div>  
+      <div class="container">  
+        <h2>Hubungi Via Email 💌</h2>  
+        <form action="https://formspree.io/f/xovwzbzb" method="POST">  
+          <div class="form-group">  
+            <label for="nama">Nama</label>  
+            <input type="text" name="nama" id="nama" required>  
+          </div>  
+          <div class="form-group">  
+            <label for="email">Email</label>  
+            <input type="email" name="_replyto" id="email" required>  
+          </div>  
+          <div class="form-group">  
+            <label for="pesan">Pesan</label>  
+            <textarea name="pesan" id="pesan" rows="5" required></textarea>  
+          </div>  
+          <button type="submit">Kirim Pesan</button>  
+        </form>  
+      </div>  
+      <h2>Hubungi Via Medsos</h2>  
+      <p>Jangan ragu untuk menghubungi saya melalui media sosial:</p>  
+      <div class="social-links">  
+        <a href="https://wa.me/62881027062862?text=Halo%20Venzy%2C%20saya%20tertarik%20dengan%20portofolio%20kamu!"  
+          target="_blank">WhatsApp 💬</a>  
+        <a href="https://instagram.com/valexy_dzx" target="_blank">Instagram 📷</a>  
+        <a href="https://tiktok.com/@azuravalexy" target="_blank">TikTok 🎵</a>  
+        <a href="https://www.linkedin.com/in/ahmad-wahid-494b42367?trk=contact-info" target="_blank">LinkedIn 💻 </a>  
+      </div>  
+    </section>  
+  </main> 
+  <footer class="footer">  
+    <p><a href="#home">© 2025 Ahmad Wahid Al Amin || Valexy</a></p>  
+      <div id="visitor-count" style="margin-top:10px;"></div>  
+      </footer>  
+  <div id="imageModal"  
+    style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:9999;">  
+    <img id="modalImage" src="" alt="Full Gambar" style="max-width:98%; max-height:98%; border-radius:12px;">  
+  </div>  
+  <script>  
+    document.querySelectorAll('.project-card img').forEach(img => {  
+      img.style.cursor = 'pointer';  
+      img.addEventListener('click', () => {  
+        const open = confirm('Buka gambar penuh?');  
+        if (open) {  
+          document.getElementById('modalImage').src = img.src;  
+          document.getElementById('imageModal').style.display = 'flex';  
+        }  
+      });  
+    });  // Tutup modal jika klik di luar gambar  
+document.getElementById('imageModal').addEventListener('click', (e) => {  
+  if (e.target.id === 'imageModal') {  
+    document.getElementById('imageModal').style.display = 'none';  
+  }  
+});  
+
+// Dark Mode Script  
+function toggleDarkMode() {  
+  document.body.classList.toggle("dark"  
+    
+  );  
+}
+
+  </script>  
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>   
+  <script>  
+    AOS.init();  
+  </script>    <div id="toast">  
+    Pesan berhasil dikirim!  
+  </div>    <script>  
+    document.querySelector('form').addEventListener('submit', function (e) {  
+      e.preventDefault();  
+      const form = this;  
+  
+      fetch(form.action, {  
+        method: form.method,  
+        body: new FormData(form),  
+        headers: {  
+          'Accept': 'application/json'  
+        }  
+      }).then(response => {  
+        if (response.ok) {  
+          form.reset();  
+          showToast("Pesan kamu berhasil dikirim! 💌");  
+        } else {  
+          showToast("Ups! Gagal mengirim pesan ❌.", true);  
+        }  
+      }).catch(() => {  
+        showToast("Terjadi kesalahan koneksi ⚠️.", true);  
+      });  
+    });  
+  
+    function showToast(message, isError = false) {  
+      const toast = document.getElementById("toast");  
+      toast.textContent = message;  
+      toast.style.background = "#ffffff";  
+      toast.style.color = "#8B4513";  
+      toast.style.border = "2px solid #8B4513";  
+      toast.style.display = "block";  
+      setTimeout(() => {  
+        toast.style.opacity = 1;  
+      }, 10); // sedikit delay biar transisi halus  
+  
+      setTimeout(() => {  
+        toast.style.opacity = 0;  
+        setTimeout(() => {  
+          toast.style.display = "none";  
+        }, 500); // waktu transisi selesai  
+      }, 3000); // muncul 3 detik  
+    }  
+  </script>  
+  <script>  
+    document.querySelectorAll("button, a.cv-button").forEach(btn => {  
+      btn.addEventListener("click", () => {  
+        const sound = document.getElementById("clickSound");  
+        if (sound) sound.play();  
+      });  
+    });  
+  </script> 
+  <script>  
+    const musicBtn = document.getElementById("music-toggle");  
+    const music = document.getElementById("bg-music");  
+    let isPlaying = false;  
+  
+    musicBtn.addEventListener("click", () => {  
+      if (isPlaying) {  
+        music.pause();  
+        musicBtn.textContent = "🎵 Musik: Mati";  
+      } else {  
+        music.play();  
+        musicBtn.textContent = "🎵 Musik: Hidup";  
+      }  
+      isPlaying = !isPlaying;  
+    });  
+  </script>  
+  <script>  
+    if ('serviceWorker' in navigator) {  
+      navigator.serviceWorker.register('service-worker.js')  
+        .then(reg => console.log('✅ Service Worker registered:', reg.scope))  
+        .catch(err => console.error('❌ Service Worker failed:', err));  
+    }  
+  </script>  
+  <script>  
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => {  
+      img.addEventListener('load', () => {  
+        img.setAttribute('data-loaded', 'true');  
+      });  
+    });  
+  </script>   
+  <script>  
+  // Dark mode otomatis berdasarkan jam (18.00–06.00)  
+  window.addEventListener("DOMContentLoaded", () => {  
+    const hour = new Date().getHours();  
+    if (hour >= 18 || hour < 6) {  
+      document.body.classList.add("dark");  
+    }  
+  });  
+</script> 
+
+<script>  
+  // Statistik Kunjungan (localStorage)  
+  let visits = localStorage.getItem("visits") || 0;  
+  visits++;  
+  localStorage.setItem("visits", visits);  
+  document.getElementById("visitor-count").textContent = ` Pengunjung: ${visits}`;  
+  // Jam Digital  
+  setInterval(() => {  
+    const now = new Date();  
+    document.getElementById("clock").textContent = ` ${now.toLocaleTimeString("id-ID")}`;  
+  }, 1000);  
+  
+  
+</script>  <!-- Leaflet CSS & JS -->  
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />  
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>  <script>  
+  // Inisialisasi peta (ganti koordinat sesuai lokasi)  
+  const map = L.map('map').setView([-7.127755, 112.723081], 15);  
+  
+  // Tambahkan tile OpenStreetMap  
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {  
+    attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'  
+  }).addTo(map);  
+  
+L.marker([-7.127755, 112.723081])  
+    .addTo(map)  
+    .bindPopup('<b>Lokasi Saya</b><br>Universitas Trunojoyo Madura.')  
+    .openPopup();  
+</script>  
+</body>  
+</html>

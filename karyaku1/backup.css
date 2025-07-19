@@ -1,0 +1,116 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+ .bi{
+    font-size: 50px !important;
+}
+.bi:hover{
+   color: #0d6!important;
+}
+.card{
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.bg-primary {
+    color: white;
+    top: -142px;
+    height: 80vh;
+}
+.card-row{
+    position: relative;
+    top: 110px;
+}
+.back-container{
+ 
+    position: relative;
+    top: 100px;
+}
+.btn-primary{
+    padding: 10px;
+    width: 100px;
+    border: none;
+    background-color: white;
+    color: black;
+}
+
+.form-control{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: none;
+    border-radius: 0;
+    }
+
+
+    .text-contact{
+        font-size: 40px;
+    }
+.border-danger{
+    border-color: aliceblue !important;
+}
+    @media only screen and (max-width: 600px) {
+        .bg-primary{
+            height: 150vh !important;
+        }
+      }
+
+      @import url('https://fonts.googleapis.com/css2?family=poppins:wght@200&display=swap');
+      *{
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+      .card{
+          overflow: hidden;
+          border-radius: 5px;
+          margin-bottom: 15px;
+      }
+      .img1 img{
+          height: 200px;
+          width: 100%;
+      }
+      .img2 img{
+          position: relative;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          z-index: 1;
+          width: 140px;
+          height: 140px;
+          border-radius: 50%;
+          border: 5px solid white;
+          margin-top: -80px;
+      }
+      h2{
+          text-align: center;
+          font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      }
+      .unerline {
+          width: 130px;
+          height: 5px;
+          background-color: aqua;
+          margin: auto;
+      }
+      .main{
+          padding: 10px;
+          font-family: 'poppins', sans-serif;
+      }
+      footer {
+        background-color: #343a40;
+        color: white;
+        text-align: center;
+        padding: 1rem 0;
+    }
+
+    .scroll-to-top {
+        
+        background-color: #5e3d17;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+       
+        font-size: 1.5rem;
+    }
+    .tengah1{
+        text-align: justify;
+    }

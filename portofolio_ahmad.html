@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portofolio Ahmad</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f2ec;
+      color: #4e342e;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #6d4c41;
+      padding: 1rem 2rem;
+      color: #fff;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    #nav-links {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+    }
+
+    #nav-links li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+    }
+
+    section {
+      padding: 2rem;
+    }
+
+    .about p {
+      text-align: justify;
+    }
+
+    .project-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .project-grid.center {
+      justify-content: center;
+      text-align: center;
+    }
+
+    .project-card {
+      flex: 1 1 300px;
+      background-color: #fff3e0;
+      border: 1px solid #d7ccc8;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .project-card a {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background-color: #8d6e63;
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .project-card a:hover {
+      background-color: #a1887f;
+      transform: scale(1.05);
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #6d4c41;
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #5d4037;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>Ahmad Wahid Al Amin</h1>
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul id="nav-links">
+        <li><a href="#about">Tentang</a></li>
+        <li><a href="#projects">Portofolio</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-photo">
+      <img src="img/foto-profil.jpg" alt="Foto Ahmad Wahid" />
+    </div>
+  </section>
+
+  <section id="about" class="about slide-up">
+    <h2>Tentang Saya</h2>
+    <p>Saya adalah Ahmad Wahid Al Amin, seorang mahasiswa manajemen yang memiliki semangat tinggi dalam mengembangkan diri melalui kegiatan organisasi, lomba, dan berbagai event kreatif. Saya percaya bahwa pengalaman di luar kelas adalah fondasi penting untuk membangun karakter, kepemimpinan, dan keterampilan masa depan.</p>
+    <p>Berawal dari semangat belajar sejak kecil, saya aktif di berbagai organisasi seperti OSIS, kepramukaan, dan divisi desain grafis. Selain itu, saya juga konsisten mengikuti berbagai lomba dan menjadi panitia dalam event-event penting di sekolah dan masyarakat. Saya yakin bahwa setiap pengalaman adalah bekal menuju masa depan yang lebih baik.</p>
+    <p>Website ini saya buat sebagai media dokumentasi dan portofolio pribadi, yang mencerminkan perjalanan saya dalam dunia pendidikan dan pengembangan diri. Melalui halaman ini, saya ingin berbagi semangat, inspirasi, dan bukti nyata bahwa dengan tekad dan konsistensi, siapa pun bisa berkembang dan berkontribusi.</p>
+    <blockquote style="margin-top:2rem; font-style:italic; color:#6e4d3c;">"Bukan kecerdasan, tetapi kerja keras dan ketekunan yang akan membawamu ke puncak." – Carl Jung</blockquote>
+  </section>
+
+  <!-- ... selanjutnya konten Portofolio, Blog, Kontak (terpotong untuk ringkas) ... -->
+
+  <footer>
+    <p>&copy; 2025 Ahmad Wahid Al Amin</p>
+  </footer>
+</body>
+</html>

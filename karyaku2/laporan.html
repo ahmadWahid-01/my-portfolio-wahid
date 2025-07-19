@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Pembeli - Valexy Azure</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    header {
+        background-color: #007bff;
+        color: white;
+        padding: 20px;
+    }
+
+    header .logo img {
+        max-width: 150px;
+    }
+
+    nav ul {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    nav ul li {
+        margin: 0 15px;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    nav ul li a:hover {
+        color: #ffcc00;
+    }
+
+    #purchaserList {
+        padding: 20px;
+        max-width: 800px;
+        margin: 20px auto;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        flex-grow: 1; /* Membuat bagian ini tumbuh untuk mengisi ruang kosong */
+    }
+
+    #purchaserList h1 {
+        text-align: center;
+    }
+
+    .purchaser {
+        margin-bottom: 20px;
+        padding: 15px;
+        background: #f4f4f4;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .purchaser h3 {
+        margin-top: 0;
+        font-size: 1.2em;
+    }
+
+    .purchaser ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .purchaser ul li {
+        margin-bottom: 8px;
+    }
+
+    .purchaser hr {
+        margin-top: 15px;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #333;
+        color: white;
+    }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+        }
+
+        header .logo img {
+            max-width: 150px;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        #purchaserList {
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #purchaserList h1 {
+            text-align: center;
+        }
+
+        .purchaser {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f4f4f4;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .purchaser h3 {
+            margin-top: 0;
+            font-size: 1.2em;
+        }
+
+        .purchaser ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .purchaser ul li {
+            margin-bottom: 8px;
+        }
+
+        .purchaser hr {
+            margin-top: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+    <img src="pp.png" alt="Valexy T-thrift">
+    <span class="name">Valexy Azure</span></span>
+</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalog.html">Katalog</a></li>
+                <li><a href="checkout.html">Keranjang</a></li>
+                <li><a href="contact.html">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="purchaserList">
+        <h1>Laporan Pembeli</h1>
+        <p>Berikut adalah laporan pembeli yang telah melakukan transaksi di Valexy Azure:</p>
+
+        <!-- Data pembeli akan ditampilkan di sini -->
+    </section>
+
+    <footer>
+        <p>&copy; Ahmad Wahid Al Amin | Valexy 2024.</p>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            const purchasers = JSON.parse(localStorage.getItem('purchasers')) || [];
+            const purchaserList = document.getElementById('purchaserList');
+
+            if (purchasers.length === 0) {
+                purchaserList.innerHTML += '<p>Belum ada pembelian.</p>';
+            } else {
+                purchasers.forEach(purchaser => {
+                    const itemList = purchaser.items.map(item => `
+                        <li>${item.name} - Rp${item.price.toLocaleString()} x ${item.quantity}</li>
+                    `).join('');
+
+                    const totalAmount = purchaser.items.reduce((total, item) => total + item.price * item.quantity, 0);
+
+                    purchaserList.innerHTML += `
+                        <div class="purchaser">
+                            <h3>${purchaser.name}</h3>
+                            <p><strong>Alamat:</strong> ${purchaser.address}</p>
+                            <p><strong>Metode Pembayaran:</strong> ${purchaser.paymentMethod}</p>
+                            <p><strong>Tanggal Pembelian:</strong> ${purchaser.date}</p>
+                            <h4>Item yang Dibeli:</h4>
+                            <ul>${itemList}</ul>
+                            <p><strong>Total Pembayaran:</strong> Rp${totalAmount.toLocaleString()}</p>
+                        </div>
+                        <hr>
+                    `;
+                });
+            }
+        };
+    </script>
+    <script>
+    window.onload = function () {
+        const purchasers = JSON.parse(localStorage.getItem('purchasers')) || [];
+        const purchaserList = document.getElementById('purchaserList');
+
+        if (purchasers.length === 0) {
+            purchaserList.innerHTML += '<p>Belum ada pembelian.</p>';
+        } else {
+            purchasers.forEach((purchaser, index) => {
+                const itemList = purchaser.items.map(item => `
+                    <li>${item.name} - Rp${item.price.toLocaleString()} x ${item.quantity}</li>
+                `).join('');
+
+                const totalAmount = purchaser.items.reduce((total, item) => total + item.price * item.quantity, 0);
+
+                purchaserList.innerHTML += `
+                    <div class="purchaser" data-index="${index}">
+                        <h3>${purchaser.name}</h3>
+                        <p><strong>Alamat:</strong> ${purchaser.address}</p>
+                        <p><strong>Metode Pembayaran:</strong> ${purchaser.paymentMethod}</p>
+                        <p><strong>Tanggal Pembelian:</strong> ${purchaser.date}</p>
+                        <h4>Item yang Dibeli:</h4>
+                        <ul>${itemList}</ul>
+                        <p><strong>Total Pembayaran:</strong> Rp${totalAmount.toLocaleString()}</p>
+                        <button class="delete-btn">Hapus Laporan</button>
+                    </div>
+                    <hr>
+                `;
+            });
+
+            // Tambahkan event listener ke semua tombol hapus
+            const deleteButtons = document.querySelectorAll('.delete-btn');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const purchaserDiv = this.parentElement;
+                    const index = purchaserDiv.getAttribute('data-index');
+
+                    // Hapus data dari localStorage
+                    purchasers.splice(index, 1);
+                    localStorage.setItem('purchasers', JSON.stringify(purchasers));
+
+                    // Hapus elemen dari DOM
+                    purchaserDiv.remove();
+                    if (purchasers.length === 0) {
+                        purchaserList.innerHTML = '<p>Belum ada pembelian.</p>';
+                    }
+                });
+            });
+        }
+    };
+</script>
+</body>
+</html>

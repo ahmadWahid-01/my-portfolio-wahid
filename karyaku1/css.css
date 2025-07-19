@@ -1,0 +1,55 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+ .bi{
+    font-size: 50px !important;
+}
+.bi:hover{
+   color: #ffa600!important;
+}
+.card{
+    cursor: pointer;
+    box-shadow: rgba(255, 255, 255, 0.24) 0px 3px 8px;
+}
+.bg-primary {
+    color: rgb(255, 255, 255);
+    top: -142px;
+    height: 80vh;
+}
+.card-row{
+    position: relative;
+    top: 110px;
+}
+.back-container{
+ 
+    position: relative;
+    top: 100px;
+}
+.btn-primary{
+    padding: 10px;
+    width: 100px;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    color: rgb(7, 7, 7);
+}
+
+.form-control{
+    box-shadow: rgba(255, 0, 0, 0.24) 0px 3px 8px;
+    border: none;
+    border-radius: 0;
+    }
+
+
+    .text-contact{
+        font-size: 40px;
+    }
+.border-danger{
+    border-color: aliceblue !important;
+}
+    @media only screen and (max-width: 600px) {
+        .bg-primary{
+            height: 150vh !important;
+        }
+      }
